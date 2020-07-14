@@ -181,8 +181,6 @@ See: https://www.algolia.com/doc/guides/building-search-ui/widgets/create-your-o
           });
         }
       });
-
-      this.helper.search();
     }
   }
 
@@ -242,17 +240,6 @@ See: https://www.algolia.com/doc/guides/building-search-ui/widgets/create-your-o
         this.helper.setState(this.searchParameters);
       }
     });
-
-    // If there's multiple call to `removeWidget()` let's wait until they are all made
-    // and then check for widgets.length & make a search on next tick
-    //
-    // This solves an issue where you unmount a page and removing widget by widget
-    setTimeout(() => {
-      // no need to trigger a search if we don't have any widgets left
-      if (this.widgets.length > 0) {
-        this.helper.search();
-      }
-    }, 0);
   }
 
   /**
